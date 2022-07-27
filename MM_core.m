@@ -5,8 +5,9 @@ for i=1:n
     S = bitsliceget((S+bitget(X,i)*Y+q_i*M)/2,n,1);
 end
 if S>M
-    Z = S-M;
+    Z_temp = S-M;
 else
-    Z = S;
+    Z_temp = S;
 end
+Z = bitsliceget(Z_temp,n,1);
 end

@@ -7,7 +7,8 @@ ts = 1/fs;
 max_n_bit = 16; % n
 word_length = 4; % w
 number_of_pe = ceil((max_n_bit+1)/word_length); % e
-simulation_time = ts*(max_n_bit + number_of_pe + 150);
+maximum_latency = 2*max_n_bit*(max_n_bit+number_of_pe-1)*ts;
+simulation_time = maximum_latency*4;
 %% simulate
 % modulus: 8167
 % public key: 4741

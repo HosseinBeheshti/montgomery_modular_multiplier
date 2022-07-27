@@ -24,9 +24,19 @@ for i=1:max_n_bit
         temp_value2 = C_e(j)+bitsliceget(bitget(X,i)*Y_e(j),word_length,1)+bitsliceget(q(i)*M_e(j),word_length,1)+S_e(j);
         S_e(j) = bitsliceget(temp_value2,word_length,1);
         C_e(j+1) = bitsliceget(temp_value2,word_length+2,word_length+1);
-        S_e(j-1) =bitconcat(bitget(S_e(j),1),bitsliceget(S_e(j-1),word_length,2));
+        S_e(j-1) = bitconcat(bitget(S_e(j),1),bitsliceget(S_e(j-1),word_length,2));
     end
     S_e(number_of_pe) = 0;
 end
-Z = bitconcat(S_e(4),S_e(3),S_e(2),S_e(1));
+Z_temp1 = zeros(1,1,'like',single_bit_word);
+for i=1:number_of_pe-1
+    Z_temp1 = bitconcat(S_e(i),Z_temp1);
+end
+Z_temp1 = bitsliceget(Z_temp1,max_n_bit+1,2);
+if Z_temp1 > M
+    Z_temp2 = Z_temp1-M;
+else
+    Z_temp2 = Z_temp1;
+end
+Z = bitsliceget(Z_temp2,max_n_bit,1);
 end

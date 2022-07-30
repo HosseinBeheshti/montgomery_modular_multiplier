@@ -1,2 +1,6 @@
 *.asv
 *deleteme*
+*.slxc
+*_sysgen*.log
+Sysgen*Report.htm
+slprj/*

@@ -41,7 +41,7 @@ disp(disp_value)
 
 % implementation with  MWR2MM_core
 P_mwr2mm = MWR2MM_core(M,K,N,max_n_bit,word_length,number_of_pe);
-Q_mwr2mm = MWR2MM_core(K,fixed_point_one,N,max_n_bit,word_length,number_of_pe);
+Q_mwr2mm = MWR2MM_core(fixed_point_one,K,N,max_n_bit,word_length,number_of_pe);
 for i = max_n_bit:-1:1
     Q_mwr2mm = MWR2MM_core(Q_mwr2mm,Q_mwr2mm,N,max_n_bit,word_length,number_of_pe);
     if bitget(E,i) == 1

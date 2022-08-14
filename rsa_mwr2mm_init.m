@@ -8,7 +8,7 @@ max_n_bit = 16; % n
 word_length = 4; % w
 number_of_pe = ceil((max_n_bit+1)/word_length); % e
 maximum_latency = 2*max_n_bit*(max_n_bit+number_of_pe-1)*ts;
-simulation_time = maximum_latency*4;
+simulation_time = maximum_latency*3;
 %% simulate
 % modulus: 8167
 % public key: 4741
@@ -41,7 +41,7 @@ disp(disp_value)
 
 % implementation with  MWR2MM_core
 P_mwr2mm = MWR2MM_core(M,K,N,max_n_bit,word_length,number_of_pe);
-Q_mwr2mm = MWR2MM_core(K,fixed_point_one,N,max_n_bit,word_length,number_of_pe);
+Q_mwr2mm = MWR2MM_core(fixed_point_one,K,N,max_n_bit,word_length,number_of_pe);
 for i = max_n_bit:-1:1
     Q_mwr2mm = MWR2MM_core(Q_mwr2mm,Q_mwr2mm,N,max_n_bit,word_length,number_of_pe);
     if bitget(E,i) == 1
